@@ -7,7 +7,7 @@ export const Season = () => {
   usePageTitle(`F1 Season ${seasonId}`);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center h-screen">
       <button onClick={() => {
         navigate(-1);
       }}>back</button>
