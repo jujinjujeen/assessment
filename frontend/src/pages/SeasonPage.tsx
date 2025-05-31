@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router";
 import { usePageTitle } from "../hooks/usePageTitle";
 
-export const Season = () => {
+export const SeasonPage = () => {
   const { seasonId } = useParams();
   const navigate = useNavigate();
   usePageTitle(`F1 Season ${seasonId}`);

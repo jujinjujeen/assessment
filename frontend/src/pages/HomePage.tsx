@@ -1,7 +1,7 @@
 import { usePageTitle } from "../hooks/usePageTitle";
 
 
-export const Home = () => {
+export const HomePage = () => {
   usePageTitle("F1 Seasons");
 
   return (
