@@ -2,10 +2,10 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-COPY backend/package.json backend/package-lock.json ./
+COPY frontend/package.json frontend/package-lock.json ./
 COPY config /config
 RUN npm install
 
-COPY backend /app
+COPY frontend /app
 
 CMD ["npm", "run", "dev"]
