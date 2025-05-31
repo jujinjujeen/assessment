@@ -142,4 +142,7 @@ Thumbs.db
 # IDEs and editors
 .vscode/
 
+#vite
+.vite
+
 notes.md
