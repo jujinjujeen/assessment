@@ -10,6 +10,8 @@ services:
       - "5444:3000"
     volumes:
       - ./backend/src:/app/src
+      - ./backend/docs:/app/docs
+      - ./libs:/libs
     environment:
       - NODE_ENV=development
 

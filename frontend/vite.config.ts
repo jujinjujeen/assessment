@@ -7,7 +7,8 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     port: 5173,
-    host: true,
+    host: '0.0.0.0',
+    strictPort: true,
     proxy: {
       '/api': {
         target: 'http://backend:3000',
@@ -17,7 +18,7 @@ export default defineConfig({
     hmr: {
       protocol: 'ws',
       host: 'localhost',
-      port: 5445,
+      clientPort: 5445,
     },
   },
 });

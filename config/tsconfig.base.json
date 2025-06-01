@@ -22,7 +22,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
     "paths": {
-      "@f1-champions/types": ["libs/types/src/index.ts"]
+      "@f1/types/*": ["../libs/types/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
