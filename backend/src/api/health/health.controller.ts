@@ -1,7 +1,5 @@
-import { components } from '@f1/types/api';
 import { Request, Response } from 'express';
-
-type HealthResponse = components['schemas']['HealthResponse'];
+import type { HealthResponse } from '@f1/types/api-schemas';
 
 export const healthController = (
   _req: Request,

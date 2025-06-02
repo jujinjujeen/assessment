@@ -43,6 +43,53 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/seasons": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List all available F1 seasons from 2005 onwards
+         * @description Returns a list of F1 seasons with their IDs and wiki URLs
+         */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description A list of F1 seasons */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            /** @example 2020 */
+                            id?: number;
+                            /**
+                             * Format: uri
+                             * @example https://en.wikipedia.org/wiki/2020_Formula_One_World_Championship
+                             */
+                            url?: string;
+                        }[];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {

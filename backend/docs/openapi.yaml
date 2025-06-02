@@ -23,6 +23,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/HealthResponse'
 
+  /seasons:
+    get:
+      summary: List all available F1 seasons from 2005 onwards
+      description: Returns a list of F1 seasons with their IDs and wiki URLs
+      tags:
+        - Seasons
+      responses:
+        '200':
+          description: A list of F1 seasons
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeasonsResponse'
+
 components:
   schemas:
     HealthResponse:
@@ -38,3 +52,41 @@ components:
           type: number
           description: Time in seconds since the API started
           example: 123.456
+    
+    Season:
+      type: object
+      required:
+        - id
+        - year
+        - url
+      properties:
+        id:
+          type: integer
+          example: 12
+        year:
+          type: string
+          example: "2020"
+        url:
+          type: string
+          format: uri
+          example: https://en.wikipedia.org/wiki/2020_Formula_One_World_Championship
+
+    SeasonsResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Season'
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+          example: "An error occurred"
+        message:
+          type: string
+          example: "Detailed error message"
+        code:
+          type: integer
+          example: 500
