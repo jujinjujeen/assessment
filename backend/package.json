@@ -7,12 +7,17 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "generate:swagger": "openapi-typescript docs/openapi.yaml --output ../libs/types/api.d.ts",
+    "prisma:generate": "prisma generate",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@types/node": "^22.15.29",
     "eslint": "^9.25.0",
     "globals": "^16.0.0",
     "tsx": "^4.19.4",

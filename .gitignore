@@ -146,6 +146,6 @@ Thumbs.db
 .vite
 
 # prisma
-generated/prisma
+**/generated/prisma
 
 notes.md
