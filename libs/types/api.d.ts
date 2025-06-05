@@ -69,15 +69,67 @@ export interface paths {
                         [name: string]: unknown;
                     };
                     content: {
-                        "application/json": {
-                            /** @example 2020 */
-                            id?: number;
-                            /**
-                             * Format: uri
-                             * @example https://en.wikipedia.org/wiki/2020_Formula_One_World_Championship
-                             */
-                            url?: string;
-                        }[];
+                        "application/json": components["schemas"]["SeasonsResponse"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/seasons/{seasonId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get details of a specific F1 season
+         * @description Returns all the races in a specific F1 season
+         */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description The ID of the F1 season (e.g., 2020) */
+                    seasonId: number;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Details of the specified F1 season */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["RacesResponse"];
+                    };
+                };
+                /** @description Bad request */
+                400: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["ErrorResponse"];
+                    };
+                };
+                /** @description Season not found */
+                404: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["ErrorResponse"];
                     };
                 };
             };
@@ -102,6 +154,57 @@ export interface components {
              * @example 123.456
              */
             uptime: number;
+        };
+        Season: {
+            /** @example 12 */
+            id: number;
+            /** @example 2020 */
+            year: string;
+            /**
+             * Format: uri
+             * @example https://en.wikipedia.org/wiki/2020_Formula_One_World_Championship
+             */
+            url: string;
+        };
+        SeasonsResponse: components["schemas"]["Season"][];
+        Driver: {
+            /** @example hamilton */
+            id: string;
+            /** @example Lewis */
+            givenName: string;
+            /** @example Hamilton */
+            familyName: string;
+            /** @example true */
+            isSeasonChampion: boolean;
+        };
+        Race: {
+            /** @example 1 */
+            id: number;
+            /** @example Bahrain Grand Prix */
+            name: string;
+            /**
+             * Format: date
+             * @example 2020-12-13T00:00:00Z
+             */
+            date: string;
+            /** @example 2020 */
+            season: number;
+            /** @example {
+             *       "id": "hamilton",
+             *       "givenName": "Lewis",
+             *       "familyName": "Hamilton",
+             *       "isSeasonChampion": true
+             *     } */
+            driver: components["schemas"]["Driver"];
+        };
+        RacesResponse: components["schemas"]["Race"][];
+        ErrorResponse: {
+            /** @example An error occurred */
+            error: string;
+            /** @example Detailed error message */
+            message?: string;
+            /** @example 500 */
+            code?: number;
         };
     };
     responses: never;

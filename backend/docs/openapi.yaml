@@ -37,6 +37,41 @@ paths:
               schema:
                 $ref: '#/components/schemas/SeasonsResponse'
 
+
+  /seasons/{seasonId}:
+    get:
+      summary: Get details of a specific F1 season
+      description: Returns all the races in a specific F1 season
+      tags:
+        - Seasons
+      parameters:
+        - name: seasonId
+          in: path
+          required: true
+          description: The ID of the F1 season (e.g., 2020)
+          schema:
+            type: integer
+            example: 2020
+      responses:
+        '200':
+          description: Details of the specified F1 season
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RacesResponse'
+        '404':
+          description: Season not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
 components:
   schemas:
     HealthResponse:
@@ -75,6 +110,63 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Season'
+
+    Driver:
+      type: object
+      required:
+        - id
+        - givenName
+        - familyName
+        - isSeasonChampion
+      properties:
+        id:
+          type: string
+          example: "hamilton"
+        givenName:
+          type: string
+          example: "Lewis"
+        familyName:
+          type: string
+          example: "Hamilton"
+        isSeasonChampion:
+          type: boolean
+          example: true
+
+    Race:
+      type: object
+      required:
+        - driver
+        - season
+        - date
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Bahrain Grand Prix"
+        date:
+          type: string
+          format: date
+          example: "2020-12-13T00:00:00Z"
+        season:
+          type: integer
+          example: 2020
+        driver:
+          type: object
+          $ref: '#/components/schemas/Driver'
+          example:
+            id: "hamilton"
+            givenName: "Lewis"
+            familyName: "Hamilton"
+            isSeasonChampion: true
+
+    RacesResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Race'
 
     ErrorResponse:
       type: object
