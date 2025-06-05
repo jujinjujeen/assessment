@@ -1,17 +1,10 @@
 {
   "extends": "../config/tsconfig.base.json",
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ],
   "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "module": "ESNext",
     "baseUrl": "./",
-    "esModuleInterop": true
-  }
+    "types": ["node", "express", "vitest"]
+  },
+  "include": ["src/**/*.ts", "prisma/**/*.ts"],
 }

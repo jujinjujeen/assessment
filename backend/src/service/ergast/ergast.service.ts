@@ -46,7 +46,7 @@ export const putSeason = async (season?: SeasonAPI) => {
 
   const driversRecord = await bulkInsertDrivers(seasonData.drivers);
   console.log(
-    `Inserted ${driversRecord.count} drivers for season ${seasonData.year}`
+    `Inserted ${driversRecord.count} new drivers for season ${seasonData.year}`
   );
 
   for (const race of seasonData.races) {
