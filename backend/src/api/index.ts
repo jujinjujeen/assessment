@@ -1,11 +1,10 @@
 import { Router } from 'express';
+import healthRouter from './health/health.route';
+import seasonsRouter from './seasons/seasons.route';
+import racesRouter from './races/races.route';
 
 export const router = Router();
 
-// Healthcheck
-router.get('/health', (_req, res) => {
-  res.status(200).json({ status: 'ok', uptime: process.uptime() });
-});
-
-// Feature routes
-// router.use('/auth', authRoutes);
+router.use(healthRouter);
+router.use(seasonsRouter);
+router.use(racesRouter);

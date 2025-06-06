@@ -4,8 +4,10 @@ WORKDIR /app
 
 COPY backend/package.json backend/package-lock.json ./
 COPY config /config
+COPY libs /libs
 RUN npm install
 
 COPY backend /app
+RUN chmod +x /app/entrypoint.sh
 
-CMD ["npm", "run", "dev"]
+ENTRYPOINT [ "/app/entrypoint.sh" ]

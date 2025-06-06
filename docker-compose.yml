@@ -1,6 +1,18 @@
 version: '3.8'
 
 services:
+  postgres:
+    image: postgres:15
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: f1_champions
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
   backend:
     build:
       context: .
@@ -8,10 +20,15 @@ services:
     container_name: backend-service
     ports:
       - "5444:3000"
+      - "5555:5555"
     volumes:
       - ./backend/src:/app/src
+      - ./backend/docs:/app/docs
+      - ./libs:/libs
     environment:
       - NODE_ENV=development
+    depends_on:
+      - postgres
 
   frontend:
     build:
@@ -26,3 +43,6 @@ services:
       - ./frontend/src:/app/src
     depends_on:
       - backend
+
+volumes:
+  postgres-data:

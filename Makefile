@@ -8,11 +8,17 @@ COMPOSE=docker compose
 PROJECT_NAME=f1-champions
 
 # Commands
-up: ## Start all services
+up: generate-types ## Start all services
+	@echo "🟢 Starting containers..."
+	@echo "🔗 Frontend: http://localhost:5445"
+	@echo "🔗 Backend:  http://localhost:5444"
 	$(COMPOSE) --project-name $(PROJECT_NAME) up --build
 
 down: ## Stop all services
-	$(COMPOSE) --project-name $(PROJECT_NAME) down --volumes --remove-orphans
+	$(COMPOSE) --project-name $(PROJECT_NAME) down --remove-orphans
+
+generate-types: ## Generate TypeScript types from OpenAPI spec in backend/docs
+	./generate-types.sh
 
 restart: down up ## Restart all services
 
@@ -36,3 +42,5 @@ help: ## Show help
 	@echo
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2}'
+
+.PHONY: up down restart logs build sh-frontend sh-backend prune help generate-types

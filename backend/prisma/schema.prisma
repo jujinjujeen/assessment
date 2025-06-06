@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Season {
+  id        Int     @id @default(autoincrement())
+  year      Int     @unique
+  wikiUrl   String
+  races     Race[]
+  champion  Driver? @relation("SeasonChampion", fields: [championId], references: [id])
+  championId Int?   // FK to Driver, nullable
+}
+
+model Driver {
+  id         Int      @id @default(autoincrement())
+  driverId   String   @unique
+  givenName  String
+  familyName String
+  results    Result[]
+  championships Season[] @relation("SeasonChampion")
+}
+
+model Race {
+  id        Int     @id @default(autoincrement())
+  raceName  String
+  season    Season  @relation(fields: [seasonId], references: [id])
+  seasonId  Int
+  result    Result?
+  date      DateTime
+
+  @@unique([raceName, seasonId])
+}
+
+model Result {
+  id       Int     @id @default(autoincrement())
+  race     Race    @relation(fields: [raceId], references: [id])
+  raceId   Int     @unique
+  driver   Driver  @relation(fields: [driverId], references: [id])
+  driverId Int
+  position Int
+}
