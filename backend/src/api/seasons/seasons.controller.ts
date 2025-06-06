@@ -1,20 +1,17 @@
+import type { ErrorResponse, SeasonsResponse } from '@f1/types/api-schemas';
 import { Request, Response } from 'express';
+import { getAllSeasons } from './seasons.service';
 
-export const seasonsController = (_req: Request, res: Response) => {
-  res.status(200).json({
-    seasons: [
-      {
-        id: '2023',
-        name: '2023 Formula 1 Season',
-        startDate: '2023-03-05',
-        endDate: '2023-11-26',
-      },
-      {
-        id: '2024',
-        name: '2024 Formula 1 Season',
-        startDate: '2024-03-03',
-        endDate: '2024-11-24',
-      },
-    ],
-  });
+export const seasonsController = async (
+  _req: Request,
+  res: Response<SeasonsResponse | ErrorResponse>
+) => {
+  try {
+    const seasons: SeasonsResponse = await getAllSeasons();
+    res.status(200).json(seasons);
+  } catch (error) {
+    console.error('Error fetching seasons:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+    return;
+  }
 };

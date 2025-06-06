@@ -5,7 +5,7 @@ services:
     image: postgres:15
     restart: always
     ports:
-      - "5443:5432"
+      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -20,6 +20,7 @@ services:
     container_name: backend-service
     ports:
       - "5444:3000"
+      - "5555:5555"
     volumes:
       - ./backend/src:/app/src
       - ./backend/docs:/app/docs

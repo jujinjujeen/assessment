@@ -7,7 +7,7 @@ const populatePrismaMock = () => ({
   findUnique: vi.fn(),
 });
 
-vi.mock('@f1/be/lib/prisma', () => {
+vi.mock('@f1/prismaInstance', () => {
   return {
     default: {
       driver: populatePrismaMock(),

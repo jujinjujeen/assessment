@@ -1,5 +1,5 @@
 import { it, expect, Mock, beforeEach, vi } from 'vitest';
-import prisma from '@f1/be/lib/prisma';
+import prisma from '@f1/prismaInstance';
 
 import {
   upsertDriver,

@@ -1,11 +1,10 @@
 import { Router } from 'express';
-import { components } from "@f1/types/api";
+import healthRouter from './health/health.route';
+import seasonsRouter from './seasons/seasons.route';
+import racesRouter from './races/races.route';
 
 export const router = Router();
 
-/**
- * See: http://localhost:5444/docs#/paths/~1health/get
- */
-router.get('/health', (_req, res) => {
-  res.status(200).json({ status: 'ok', uptime: process.uptime() } as components['schemas']['HealthResponse']);
-});
+router.use(healthRouter);
+router.use(seasonsRouter);
+router.use(racesRouter);

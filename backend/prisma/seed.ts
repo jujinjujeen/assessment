@@ -12,5 +12,6 @@ async function seed() {
 seed()
   .catch((e) => {
     console.error('❌ Seed failed:', e);
+    process.exit(1);
   })
   .finally(() => prisma.$disconnect());

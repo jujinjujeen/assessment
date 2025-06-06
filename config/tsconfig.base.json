@@ -21,11 +21,6 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
-    "paths": {
-      "@f1/types/*": ["../libs/types/*"],
-      "@f1/be/*": ["../backend/src/*"],
-      "@f1/fe/*": ["../frontend/src/*"]
-    }
   },
   "exclude": ["node_modules", "tmp"]
 }

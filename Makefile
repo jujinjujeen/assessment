@@ -15,7 +15,7 @@ up: generate-types ## Start all services
 	$(COMPOSE) --project-name $(PROJECT_NAME) up --build
 
 down: ## Stop all services
-	$(COMPOSE) --project-name $(PROJECT_NAME) down --volumes --remove-orphans
+	$(COMPOSE) --project-name $(PROJECT_NAME) down --remove-orphans
 
 generate-types: ## Generate TypeScript types from OpenAPI spec in backend/docs
 	./generate-types.sh

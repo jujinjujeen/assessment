@@ -82,7 +82,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/seasons/{seasonId}": {
+    "/seasons/{seasonId}/races": {
         parameters: {
             query?: never;
             header?: never;
@@ -159,7 +159,7 @@ export interface components {
             /** @example 12 */
             id: number;
             /** @example 2020 */
-            year: string;
+            year: number;
             /**
              * Format: uri
              * @example https://en.wikipedia.org/wiki/2020_Formula_One_World_Championship

@@ -8,5 +8,6 @@ COPY libs /libs
 RUN npm install
 
 COPY backend /app
+RUN chmod +x /app/entrypoint.sh
 
-CMD ["npm", "run", "dev"]
+ENTRYPOINT [ "/app/entrypoint.sh" ]

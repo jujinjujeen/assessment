@@ -3,8 +3,15 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "module": "ESNext",
-    "baseUrl": "./",
-    "types": ["node", "express", "vitest"]
+    "baseUrl": ".",
+    "types": ["node", "express", "vitest"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "paths": {
+      "@f1/be/*": ["src/*"],
+      "@f1/prismaInstance": ["src/lib/prisma.ts"],
+      "@f1/types/*": ["../libs/types/*"],
+    }
   },
-  "include": ["src/**/*.ts", "prisma/**/*.ts"],
+  "include": ["src/**/*.ts", "prisma/**/*.ts"]
 }
