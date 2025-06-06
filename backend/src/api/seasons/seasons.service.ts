@@ -1,11 +1,9 @@
 import { Season } from '@f1/types/api-schemas';
-import prisma from '@f1/prismaInstance';
 import { mapSeason } from './seasons.mapper';
+import { findAllSeasons } from './seasons.repo';
 
 export const getAllSeasons = async (): Promise<Season[]> => {
-  const seasonsDb = await prisma.season.findMany({
-    orderBy: { year: 'desc' },
-  });
+  const seasonsDb = await findAllSeasons();
 
   return seasonsDb.map(mapSeason);
 };

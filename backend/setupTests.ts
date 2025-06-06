@@ -5,6 +5,7 @@ const populatePrismaMock = () => ({
   upsert: vi.fn(),
   createMany: vi.fn(),
   findUnique: vi.fn(),
+  findMany: vi.fn(),
 });
 
 vi.mock('@f1/prismaInstance', () => {

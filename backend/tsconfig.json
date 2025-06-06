@@ -11,6 +11,7 @@
       "@f1/be/*": ["src/*"],
       "@f1/prismaInstance": ["src/lib/prisma.ts"],
       "@f1/types/*": ["../libs/types/*"],
+      "@f1/constants": ["./src/constants"],
     }
   },
   "include": ["src/**/*.ts", "prisma/**/*.ts"]

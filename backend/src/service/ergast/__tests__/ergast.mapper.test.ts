@@ -1,4 +1,3 @@
-// backend/src/service/ergast/__tests__/ergast.mapper.test.ts
 import { describe, it, expect } from 'vitest';
 import { raceMapper } from '../ergast.mapper';
 import type {

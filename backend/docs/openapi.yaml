@@ -163,10 +163,6 @@ components:
             familyName: "Hamilton"
             isSeasonChampion: true
 
-    RacesResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Race'
 
     ErrorResponse:
       type: object
