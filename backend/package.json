@@ -10,6 +10,7 @@
     "test": "vitest --config vitest.config.ts",
     "test:ci": "vitest run --config vitest.config.ts",
     "test:coverage": "vitest run --coverage",
+    "lint": "eslint src --ext .ts,.js",
     "build": "tsc --build --verbose tsconfig.prod.json && tsc-alias -p tsconfig.prod.json",
     "postbuild": "copyfiles -u 1 \"docs/**/*\" dist/app/docs",
     "serve": "node dist/app/src/index.js"

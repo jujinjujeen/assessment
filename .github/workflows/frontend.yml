@@ -1,0 +1,29 @@
+name: Frontend CI/CD
+on:
+  push:
+    branches: [ci]
+    paths:
+      - 'frontend/**'
+      - 'libs/**'
+      - 'config/**'
+  pull_request:
+    paths:
+      - 'frontend/**'
+      - 'libs/**'
+      - 'config/**'
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with: 
+          node-version: '20'
+      - name: Install & Lint
+        run: npm ci && npm run lint
+        working-directory: frontend
+      - name: Test
+        run: npm test
+        working-directory: frontend
