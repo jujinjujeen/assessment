@@ -9,7 +9,6 @@ const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
 const bootstrap = async () => {
   try {
-    console.log(process.env.PORT);
     const app = createApp();
 
     await prisma.$connect();

@@ -34,7 +34,7 @@ services:
       - ./backend/docs:/app/docs
       - ./libs:/libs
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
       - REDIS_HOST=redis
       - REDIS_PORT=6379
     depends_on:
