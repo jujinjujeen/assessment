@@ -4,10 +4,10 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
+import path from 'path';
 
 import { router } from './api';
 import { errorHandler } from './middleware/errorHandler';
-import path from 'path';
 
 
 export const createApp = () => {

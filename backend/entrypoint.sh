@@ -11,4 +11,9 @@ else
   npx prisma db seed
 fi
 
-exec npm run dev
+if [ "$NODE_ENV" = "production" ]; then
+  npm run build
+  exec npm run serve
+else
+  exec npm run dev
+fi
