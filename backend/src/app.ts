@@ -8,7 +8,8 @@ import path from 'path';
 
 import { router } from './api';
 import { errorHandler } from './middleware/errorHandler';
-
+import { CACHE } from './constants';
+import { cacheMiddleware } from './middleware/cache';
 
 export const createApp = () => {
   const app = express();
@@ -31,6 +32,7 @@ export const createApp = () => {
 
   // Routes
   app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  app.use('/api', cacheMiddleware(CACHE.ONE_HOUR));
   app.use('/api', router);
 
   // 404 fallback

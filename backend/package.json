@@ -11,8 +11,8 @@
     "test:ci": "vitest run --config vitest.config.ts",
     "test:coverage": "vitest run --coverage",
     "build": "tsc --build --verbose tsconfig.prod.json && tsc-alias -p tsconfig.prod.json",
-    "postbuild": "copyfiles -u 1 \"docs/**/*\" dist/backend/docs",
-    "serve": "node dist/backend/src/index.js"
+    "postbuild": "copyfiles -u 1 \"docs/**/*\" dist/app/docs",
+    "serve": "node dist/app/src/index.js"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -32,7 +32,7 @@
     "tsconfig-paths": "^4.2.0",
     "tsx": "^4.19.4",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.30.1", 
+    "typescript-eslint": "^8.30.1",
     "vitest": "^3.2.1"
   },
   "dependencies": {
@@ -47,6 +47,7 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "helmet": "^8.1.0",
+    "ioredis": "^5.6.1",
     "morgan": "^1.10.0",
     "swagger-ui-express": "^5.0.1",
     "tslib": "^2.8.1",

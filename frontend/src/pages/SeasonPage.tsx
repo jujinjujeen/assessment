@@ -25,7 +25,7 @@ export const SeasonPage = () => {
         <ul className="list-disc list-inside">
           {data.map((race) => (
             <li>
-              {race.name} - {race.driver.givenName} {race.driver.givenName}{' '}
+              {race.name} - {race.driver.givenName} {race.driver.familyName}{' '}
               {race.driver.isSeasonChampion ? '✅' : ''}
             </li>
           ))}

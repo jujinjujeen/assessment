@@ -13,6 +13,8 @@ fi
 
 if [ "$NODE_ENV" = "production" ]; then
   npm run build
+  ls -la
+  ls -la dist
   exec npm run serve
 else
   exec npm run dev

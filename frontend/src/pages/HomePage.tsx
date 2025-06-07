@@ -21,7 +21,7 @@ export const HomePage = () => {
                 to={`/season/${season.year}`}
                 className="text-blue-500 hover:underline"
               >
-                Season {season.year} - {season.winner}
+                Season {season.year} -- {season.winner}
               </Link>
             </li>
           ))}
