@@ -1,3 +1,4 @@
+import "tsconfig-paths/register";
 import dotenv from 'dotenv';
 import { createApp } from './app';
 // import { prisma } from './lib/prisma';

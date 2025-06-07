@@ -7,12 +7,13 @@ import YAML from 'yamljs';
 
 import { router } from './api';
 import { errorHandler } from './middleware/errorHandler';
-import { pathResolve } from './utils/pathResolve';
+import path from 'path';
+
 
 export const createApp = () => {
   const app = express();
   const swaggerDocument = YAML.load(
-    pathResolve(import.meta.url, '../docs/openapi.yaml')
+    path.resolve(__dirname, '../docs/openapi.yaml')
   );
 
   // Security headers

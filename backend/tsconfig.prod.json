@@ -1,6 +1,7 @@
 {
   "extends": "../config/tsconfig.base.json",
   "compilerOptions": {
+    "outDir": "./dist",
     "module": "CommonJS",
     "baseUrl": ".",
     "types": ["node", "express", "vitest"],
@@ -13,5 +14,13 @@
       "@f1/constants": ["./src/constants"],
     }
   },
-  "include": ["src/**/*.ts", "prisma/**/*.ts"]
+  "include": ["src/**/*.ts", "prisma/**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage",
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts",
+    "src/**/*.d.ts"
+  ],
 }
