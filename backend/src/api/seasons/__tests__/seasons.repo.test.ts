@@ -12,6 +12,9 @@ describe('seasons.repo', () => {
       await findAllSeasons();
 
       expect(prisma.season.findMany).toHaveBeenCalledWith({
+        include: {
+          champion: true,
+        },
         orderBy: { year: 'desc' },
       });
     });
@@ -20,6 +23,9 @@ describe('seasons.repo', () => {
       await findAllSeasons('asc');
 
       expect(prisma.season.findMany).toHaveBeenCalledWith({
+        include: {
+          champion: true,
+        },
         orderBy: { year: 'asc' },
       });
     });
