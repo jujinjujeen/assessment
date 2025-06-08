@@ -8,10 +8,13 @@ interface SeasonsListProps {
 
 export const SeasonsList = ({ seasons }: SeasonsListProps) => {
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <section
+      className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+      aria-label={`${seasons.length} Formula 1 seasons available`}
+    >
       {seasons.map((season) => (
         <SeasonCard key={season.id} season={season} />
       ))}
-    </div>
+    </section>
   );
 };

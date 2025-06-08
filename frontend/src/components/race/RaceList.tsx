@@ -7,10 +7,13 @@ interface RacesListProps {
 
 export const RacesList = ({ races }: RacesListProps) => {
   return (
-    <div className="space-y-4">
+    <section
+      className="space-y-4"
+      aria-label={`${races.length} races in this season`}
+    >
       {races.map((race, index) => (
         <RaceCard key={race.id || `race-${index}`} race={race} index={index} />
       ))}
-    </div>
+    </section>
   );
 };
