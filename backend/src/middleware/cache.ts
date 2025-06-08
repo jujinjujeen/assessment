@@ -1,6 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
 import redis from '@f1/redisClient';
 
+/**
+ * Middleware to cache GET responses in Redis.
+ * @param ttlSeconds Time to live in seconds for the cache
+ * @returns 
+ */
 export function cacheMiddleware(ttlSeconds: number) {
   return async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     // Only cache GETs exclude health checks

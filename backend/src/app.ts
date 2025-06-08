@@ -11,6 +11,7 @@ import { errorHandler } from './middleware/errorHandler';
 import { CACHE } from './constants';
 import { cacheMiddleware } from './middleware/cache';
 import rateLimiter from './middleware/rateLimiter';
+import { compressionMiddleware } from './middleware/compressionMiddleware';
 
 export const createApp = () => {
   const app = express();
@@ -35,6 +36,9 @@ export const createApp = () => {
 
   // Rate limiting
   app.use(rateLimiter);
+
+  // Compression
+  app.use(compressionMiddleware);
 
   // Routes
   app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));

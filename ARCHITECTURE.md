@@ -58,7 +58,8 @@ Ergast F1 API integration is isolated in `src/service/ergast/`:
 ### Infrastructure
 - **Rate Limiting**: Protects against abuse
 - **CORS**: Production allows only frontend domain
-- **Redis Caching**: API responses cached (1 minute TTL, configurable)
+- **Compression**: Gzip/Brotli compression for text responses
+- **Redis Caching**: API responses cached (1 hour TTL, configurable)
 - **Prisma ORM**: Type-safe database operations
 
 ## Frontend Architecture
