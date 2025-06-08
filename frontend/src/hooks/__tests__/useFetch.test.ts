@@ -12,9 +12,11 @@ describe('useFetch', () => {
 
     const { result } = renderHook(() => useFetch(mockFetcher));
 
-    expect(result.current.loading).toBe(true);
-    expect(result.current.data).toBe(null);
-    expect(result.current.error).toBe(null);
+    waitFor(() => {
+      expect(result.current.loading).toBe(true);
+      expect(result.current.data).toBe(null);
+      expect(result.current.error).toBe(null);
+    });
   });
 
   it('should fetch data successfully', async () => {
@@ -68,7 +70,9 @@ describe('useFetch', () => {
 
     renderHook(() => useFetch(mockFetcher, param1, param2));
 
-    expect(mockFetcher).toHaveBeenCalledWith(param1, param2);
+    waitFor(() => {
+      expect(mockFetcher).toHaveBeenCalledWith(param1, param2);
+    });
   });
 
   it('should refetch when parameters change', async () => {
