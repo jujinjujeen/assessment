@@ -24,6 +24,8 @@ export const createApp = () => {
   app.use(morgan('combined'));
 
   // CORS
+  // Cors origin is set in production via environment variable
+  // or defaults to '*' in development
   app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
 
   // Body parsers

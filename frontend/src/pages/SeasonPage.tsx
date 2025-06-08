@@ -2,38 +2,57 @@ import { useParams, useNavigate } from 'react-router';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { fetchSeasonDetails } from '../api/seasons';
 import { useFetch } from '../hooks/useFetch';
+import { PageLayout } from '../layouts/PageLayout';
+import { LoadingSpinner } from '../components/UI/LoadingSpinner';
+import { ErrorMessage } from '../components/UI/ErrorMessage';
+import { EmptyState } from '../components/UI/EmptyState';
+import { RacesList } from '../components/race/RaceList';
 
 export const SeasonPage = () => {
   const { seasonId } = useParams();
   const navigate = useNavigate();
+  
   usePageTitle(`F1 Season ${seasonId}`);
-  const { data, loading, error } = useFetch(fetchSeasonDetails, seasonId || '');
+  
+  const { data, loading, error } = useFetch(
+    fetchSeasonDetails,
+    seasonId || ''
+  );
+
+  const handleBack = () => {
+    navigate(-1);
+  };
+
+  const renderContent = () => {
+    if (loading) {
+      return (
+        <LoadingSpinner message={`Loading ${seasonId} season details...`} />
+      );
+    }
+
+    if (error) {
+      return <ErrorMessage error={error} />;
+    }
+
+    if (!data || data.length === 0) {
+      return (
+        <EmptyState
+          message={`No race details available for ${seasonId} season`}
+          icon="🏁"
+        />
+      );
+    }
+
+    return <RacesList races={data} />;
+  };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <button
-        onClick={() => {
-          navigate(-1);
-        }}
-      >
-        back
-      </button>
-      <h1 className="text-4xl font-bold mb-4">F1 Season {seasonId}</h1>
-      {loading && <p className="text-lg">Loading season details...</p>}
-      {error && <p className="text-red-500">Error: {error.message}</p>}
-      {data && (
-        <ul className="list-disc list-inside">
-          {data.map((race) => (
-            <li>
-              {race.name} - {race.driver.givenName} {race.driver.familyName}{' '}
-              {race.driver.isSeasonChampion ? '✅' : ''}
-            </li>
-          ))}
-        </ul>
-      )}
-      {!loading && !data && !error && (
-        <p className="text-lg">No season details available.</p>
-      )}
-    </div>
+    <PageLayout
+      title={`${seasonId} Season`}
+      showBackButton
+      onBack={handleBack}
+    >
+      {renderContent()}
+    </PageLayout>
   );
 };

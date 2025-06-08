@@ -10,10 +10,10 @@ export function cacheMiddleware(ttlSeconds: number) {
     }
 
     const cacheKey = `cache:${req.originalUrl}`;
-    console.log(`Checking cache for ${cacheKey}`);
     const cached = await redis.get(cacheKey);
     if (cached) {
       // short-circuit if we have it
+      console.log(`Cache hit for ${cacheKey}`);
       res.json(JSON.parse(cached));
       return
     }
