@@ -7,10 +7,7 @@ function App() {
   return (
     <Routes>
       <Route index element={<HomePage />} />
-      <Route path="/season">
-        <Route path=":seasonId" element={<SeasonPage />} />
-        <Route index element={<Navigate to="/" replace />} />
-      </Route>
+      <Route path="/season/:seasonId" element={<SeasonPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

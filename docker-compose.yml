@@ -1,6 +1,14 @@
 version: '3.8'
 
 services:
+  redis:
+    image: redis:7-alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
   postgres:
     image: postgres:15
     restart: always
@@ -27,8 +35,11 @@ services:
       - ./libs:/libs
     environment:
       - NODE_ENV=development
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
     depends_on:
       - postgres
+      - redis
 
   frontend:
     build:
@@ -46,3 +57,4 @@ services:
 
 volumes:
   postgres-data:
+  redis-data:

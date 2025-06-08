@@ -1,4 +1,4 @@
-import { components } from './api';
+import type { components } from './api';
 
 export type HealthResponse = components['schemas']['HealthResponse'];
 export type Season = components['schemas']['Season'];

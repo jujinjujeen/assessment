@@ -1,0 +1,86 @@
+name: Frontend CI/CD
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'frontend/**'
+      - 'libs/**'
+      - 'config/**'
+      - '.github/workflows/frontend.yml'
+  pull_request:
+    paths:
+      - 'frontend/**'
+      - 'libs/**'
+      - 'config/**'
+  # This allows you to manually trigger the workflow from the GitHub Actions UI
+  workflow_dispatch:
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: frontend/node_modules
+          key: ${{ runner.os }}-frontend-deps-${{ hashFiles('frontend/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-frontend-deps-
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install & Lint
+        run: |
+          cd frontend
+          npm ci
+          npm run lint
+
+      - name: Test
+        run: |
+          cd frontend
+          npm test
+
+  build-push:
+    needs: lint-test
+    runs-on: ubuntu-latest
+    env:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ env.DOCKERHUB_USERNAME }}
+          password: ${{ env.DOCKERHUB_TOKEN }}
+
+      - name: Build & push BE Image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: frontend/Dockerfile.prod
+          push: true
+          tags: ${{ env.DOCKERHUB_USERNAME }}/frontend:latest
+          build-args: |
+            VITE_BASE_URL=${{ env.VITE_BASE_URL }}
+
+  deploy:
+    needs: build-push
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    container: ghcr.io/railwayapp/cli:latest
+    env:
+      SVC_ID: frontend
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to Railway
+        run: railway up --service $SVC_ID --detach

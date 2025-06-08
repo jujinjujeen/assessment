@@ -4,15 +4,17 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
+import path from 'path';
 
 import { router } from './api';
 import { errorHandler } from './middleware/errorHandler';
-import { pathResolve } from './utils/pathResolve';
+import { CACHE } from './constants';
+import { cacheMiddleware } from './middleware/cache';
 
 export const createApp = () => {
   const app = express();
   const swaggerDocument = YAML.load(
-    pathResolve(import.meta.url, '../docs/openapi.yaml')
+    path.resolve(__dirname, '../docs/openapi.yaml')
   );
 
   // Security headers
@@ -30,6 +32,7 @@ export const createApp = () => {
 
   // Routes
   app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  app.use('/api', cacheMiddleware(CACHE.ONE_HOUR));
   app.use('/api', router);
 
   // 404 fallback

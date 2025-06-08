@@ -21,7 +21,11 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "paths": {
+      "@f1/types/*": ["../libs/types/*"],
+      "@f1/fe/*": ["./src/*"]
+    }
   },
   "include": ["src"]
 }

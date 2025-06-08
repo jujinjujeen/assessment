@@ -10,7 +10,7 @@ export const raceMapper = (
   championAPI: DriverStandingsResponse['MRData']['StandingsTable'],
   seasonAPI: SeasonAPI
 ): Season => {
-  let res: Season = {
+  const res: Season = {
     year: parseInt(seasonAPI.season, 10),
     url: seasonAPI.url,
     winner: {
@@ -28,8 +28,8 @@ export const raceMapper = (
     races: [],
   };
 
-  let drivers = new Map<string, Driver>();
-  let races: Race[] = [];
+  const drivers = new Map<string, Driver>();
+  const races: Race[] = [];
   resultsAPI?.Races?.forEach((race) => {
     const driverId = race?.Results?.[0]?.Driver?.driverId || '';
     races.push({

@@ -165,6 +165,8 @@ export interface components {
              * @example https://en.wikipedia.org/wiki/2020_Formula_One_World_Championship
              */
             url: string;
+            /** @example hamilton */
+            winner: string;
         };
         SeasonsResponse: components["schemas"]["Season"][];
         Driver: {
