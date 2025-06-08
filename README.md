@@ -1,5 +1,7 @@
 # F1 Champions
 
+Check out the [live demo](https://humorous-learning-production.up.railway.app/) to see the app in action!
+
 A modern, full-stack web application showcasing Formula 1 World Champions from 2005 to present. Built with React, Node.js, and PostgreSQL, featuring real-time data from the Ergast F1 API.
 
 - **Interactive SPA** displaying F1 champions with detailed race results
@@ -33,6 +35,9 @@ The application will automatically fetch and seed F1 data on first startup.
 
 ## Architecture
 
+Check out architecture reasoning [here](ARCHITECTURE.md).
+
+### Project Structure
 ```
 f1-champions/
 ├── frontend/          # React + TypeScript SPA
@@ -80,9 +85,6 @@ cd backend
 
 # Development server with hot reload
 npm run dev
-
-# Update F1 data from Ergast API
-npm run prisma:update
 
 # Run tests
 npm run test
