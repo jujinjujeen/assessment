@@ -3,13 +3,12 @@ interface EmptyStateProps {
   icon?: string;
 }
 
-export const EmptyState = ({
-  message,
-  icon = '📭',
-}: EmptyStateProps) => {
+export const EmptyState = ({ message, icon = '📭' }: EmptyStateProps) => {
   return (
     <div className="text-center py-12">
-      <div className="text-4xl mb-4">{icon}</div>
+      <div className="text-4xl mb-4" aria-hidden="true">
+        {icon}
+      </div>
       <p className="text-lg text-gray-600 dark:text-gray-400">{message}</p>
     </div>
   );

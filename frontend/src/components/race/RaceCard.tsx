@@ -10,12 +10,15 @@ export const RaceCard = ({ race, index }: RaceCardProps) => {
   const isChampion = driver.isSeasonChampion;
 
   return (
-    <div
+    <article
       className={`bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/50 border p-4 ${
         isChampion
           ? 'border-yellow-300 dark:border-yellow-600 bg-gradient-to-r from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20'
           : 'border-gray-200 dark:border-gray-700'
       }`}
+      aria-label={`Race ${index + 1}: ${race.name}, winner: ${
+        race.driver.givenName
+      } ${race.driver.givenName}${isChampion ? ', season champion' : ''}`}
     >
       <div className="flex items-center justify-between">
         <div className="flex-1">
@@ -44,6 +47,6 @@ export const RaceCard = ({ race, index }: RaceCardProps) => {
           </div>
         )}
       </div>
-    </div>
+    </article>
   );
 };
