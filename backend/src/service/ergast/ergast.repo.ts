@@ -5,7 +5,7 @@ import {
   Result as PrismaResult,
 } from '@prisma/client';
 import { Season, Driver, Result, Race } from './types';
-import prisma from "@f1/prismaInstance"
+import prisma from '@f1/prismaInstance';
 
 export const upsertDriver = async (driver: Driver): Promise<PrismaDriver> => {
   return prisma.driver.upsert({
