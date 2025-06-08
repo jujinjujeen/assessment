@@ -40,16 +40,24 @@ Check out architecture reasoning [here](ARCHITECTURE.md).
 ### Project Structure
 ```
 f1-champions/
-├── frontend/          # React + TypeScript SPA
-│   ├── src/components # Reusable UI components
-│   ├── src/pages/     # Route components
-│   └── src/api/       # API client layer
-├── backend/           # Express + TypeScript API
-│   ├── src/api/       # REST endpoints
-│   ├── src/service/   # External API integration
-│   └── prisma/        # Database schema & migrations
-├── libs/types/        # Shared TypeScript definitions
-└── infra/            # Deployment configurations
+├── frontend/             # React + TypeScript SPA
+│   ├── src/components    # Components for displaying F1 data
+│   ├── src/components/ui # Reusable UI components
+│   ├── src/layout/       # Layout components
+│   ├── src/hooks/        # Custom React hooks
+│   ├── src/pages/        # Route components
+│   └── src/api/          # API client layer
+├── backend/              # Express + TypeScript API
+│   ├── src/api/          # REST endpoints
+│   ├── src/service/      # External API integration
+│   ├── src/constants/    # Constants and enums
+│   ├── src/middleware/   # Middleware functions
+│   ├── src/lib/          # Instance creation modules
+│   ├── src/types/        # TypeScript types
+│   ├── src/utils/        # Utility functions
+│   └── prisma/           # Database schema & migrations
+├── libs/types/           # Shared TypeScript definitions
+└── config/               # Shared configuration files
 ```
 
 ### Tech Stack
