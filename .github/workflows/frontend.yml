@@ -44,7 +44,7 @@ jobs:
       - name: Test
         run: |
           cd frontend
-          npm test:ci
+          npm test
 
   build-push:
     needs: lint-test
