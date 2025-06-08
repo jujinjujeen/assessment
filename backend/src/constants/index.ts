@@ -2,6 +2,7 @@
 export const TIME = {
   ONE_SECOND: 1000,
   ONE_MINUTE: 60 * 1000,
+  FIFTEEN_MINUTES: 15 * 60 * 1000,
 };
 
 // Cache durations in seconds

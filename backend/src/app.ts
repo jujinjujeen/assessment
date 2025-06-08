@@ -10,6 +10,7 @@ import { router } from './api';
 import { errorHandler } from './middleware/errorHandler';
 import { CACHE } from './constants';
 import { cacheMiddleware } from './middleware/cache';
+import rateLimiter from './middleware/rateLimiter';
 
 export const createApp = () => {
   const app = express();
@@ -31,6 +32,9 @@ export const createApp = () => {
   // Body parsers
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+
+  // Rate limiting
+  app.use(rateLimiter);
 
   // Routes
   app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
