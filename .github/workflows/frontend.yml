@@ -1,7 +1,7 @@
 name: Frontend CI/CD
 on:
   push:
-    branches: [ci]
+    branches: [main]
     paths:
       - 'frontend/**'
       - 'libs/**'
@@ -74,7 +74,7 @@ jobs:
 
   deploy:
     needs: build-push
-    if: github.ref == 'refs/heads/ci'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     container: ghcr.io/railwayapp/cli:latest
     env:
