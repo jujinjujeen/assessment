@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { TIME } from '@f1/be/constants';
 
-const DEFAULT_MAX_RETRIES = 5;
+const DEFAULT_MAX_RETRIES = 10;
 const BASE_DELAY_MS = TIME.ONE_SECOND;
 const MAX_DELAY_MS = TIME.ONE_MINUTE / 2;
 const RETRY_STATUSES = [429, 502, 503, 504];
