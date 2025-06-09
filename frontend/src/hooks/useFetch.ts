@@ -4,6 +4,7 @@ interface FetchState<T> {
   data: T | null;
   loading: boolean;
   error: Error | null;
+  retry: () => void;
 }
 
 /**
@@ -19,6 +20,11 @@ export function useFetch<T, A extends unknown[]>(
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
+  const [retries, setRetries] = useState(0);
+
+  const retry = () => {
+    setRetries((prev) => prev + 1);
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -45,7 +51,7 @@ export function useFetch<T, A extends unknown[]>(
     return () => {
       cancelled = true;
     };
-  }, [fetcher, ...params]);
+  }, [fetcher, ...params, retries]);
 
-  return { data, loading, error };
+  return { data, loading, error, retry };
 }
