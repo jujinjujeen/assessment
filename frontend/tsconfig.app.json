@@ -26,5 +26,11 @@
       "@f1/types/*": ["../libs/types/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": [
+    "**/*.test.*",
+    "**/*.spec.*",
+    "**/__tests__/**/*",
+    "**/__mocks__/**/*"
+  ]
 }
