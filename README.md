@@ -8,6 +8,8 @@ A modern, full-stack web application showcasing Formula 1 World Champions from 2
 - **Real-time data sync** with official F1 statistics via Ergast API  
 - **Production-ready architecture** with Docker, Redis caching, and automated CI/CD
 
+> Check out the assessment goal and task completion checklist [here](./docs/CHECKLIST.md).
+
 ## Getting Started
 
 ### Prerequisites
