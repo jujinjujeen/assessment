@@ -17,6 +17,8 @@ export const racesController = async (
       message: `Season with year ${seasonId} not found or has no races.`,
       code: HTTP_STATUS.NOT_FOUND,
     });
+    return;
   }
   res.status(HTTP_STATUS.OK).json(races);
+  return;
 };

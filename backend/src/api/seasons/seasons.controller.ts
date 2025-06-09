@@ -8,4 +8,5 @@ export const seasonsController = async (
 ) => {
   const seasons: SeasonsResponse = await getAllSeasons();
   res.status(200).json(seasons);
+  return;
 };
