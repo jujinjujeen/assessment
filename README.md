@@ -12,16 +12,16 @@ A modern, full-stack web application showcasing Formula 1 World Champions from 2
 
 ### Prerequisites
 - Docker and Docker Compose
-- Node.js 18+ (for local development)
+- Node.js 20+ (for local development)
 - Git
 
 ### Installation
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone git@github.com:jujinjujeen/f1-champions.git
 cd f1-champions
 
-# Start all services (frontend, backend, database, redis)
+# Start all services (frontend, backend, database, db ui, redis)
 make up
 ```
 
@@ -30,6 +30,7 @@ After running `make up`, visit:
 - **Frontend**: http://localhost:5445
 - **Backend API**: http://localhost:5444
 - **API Docs**: http://localhost:5444/docs
+- **Database UI** http://localhost:8081 (pgweb)
 
 The application will automatically fetch and seed F1 data on first startup.
 

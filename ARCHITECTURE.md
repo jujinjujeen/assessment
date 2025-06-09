@@ -64,7 +64,7 @@ Ergast F1 API integration is isolated in `src/service/ergast/`:
 
 ## Frontend Architecture
 
-### Component Organization
+### Folder Structure
 
 ```
 src/
@@ -82,6 +82,7 @@ src/
 - **Future Caching**: Architecture allows for frontend caching layer
 
 ### Type Safety
+- Shared typescript config in `config/tsconfig.base.json`
 - Shared types from `libs/types/`
 - API responses automatically typed
 - End-to-end type safety from database to UI
@@ -135,8 +136,9 @@ Testing, linting, publishin Docker images, and deploying to Railway is automated
 - More files per feature, but better organization
 - In real life rate limiting and CORS would be more complex, but simplified here for clarity
 - No state management library, but custom hooks suffice for current complexity
+
 ## Future Improvements
 - **Frontend Caching**: Implement caching layer for API responses
 - **State Management**: Consider Redux/Zustand if app complexity increases
-- **Testing**: Add more unit and integration tests
+- **Testing**: Add integration tests for API endpoints, E2E tests for critical flows
 - **Monitoring**: Integrate logging and monitoring for production
