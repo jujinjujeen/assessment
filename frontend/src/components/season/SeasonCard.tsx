@@ -1,11 +1,12 @@
 import { Link } from 'react-router';
 import type { Season } from '@f1/types/api-schemas';
+import { memo } from 'react';
 
 interface SeasonCardProps {
   season: Season;
 }
 
-export const SeasonCard = ({ season }: SeasonCardProps) => {
+export const SeasonCard = memo(({ season }: SeasonCardProps) => {
   return (
     <Link
       to={`/season/${season.year}`}
@@ -27,4 +28,4 @@ export const SeasonCard = ({ season }: SeasonCardProps) => {
       </div>
     </Link>
   );
-};
+});

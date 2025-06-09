@@ -51,7 +51,7 @@ describe('errorHandler middleware', () => {
     expect(res.json).toHaveBeenCalledOnce();
     const payload = (res.json as Mock)?.mock?.calls?.[0]?.[0];
     expect(payload).toEqual({
-      message: 'Internal Server Error1',
+      message: 'Internal Server Error',
       error: testError,
     });
 
@@ -77,7 +77,7 @@ describe('errorHandler middleware', () => {
     expect(res.json).toHaveBeenCalledOnce();
     const payload = (res.json as Mock)?.mock?.calls?.[0]?.[0];
     expect(payload).toEqual({
-      message: 'Internal Server Error1',
+      message: 'Internal Server Error',
       error: undefined,
     });
 

@@ -8,4 +8,5 @@ export const healthController = async (
 ) => {
   await prisma.$queryRaw`SELECT 1`;
   res.status(200).json({ status: 'ok', uptime: process.uptime() });
+  return;
 };

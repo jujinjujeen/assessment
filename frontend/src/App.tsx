@@ -1,7 +1,9 @@
 import { Navigate, Route, Routes } from 'react-router';
 import './App.css';
-import { HomePage } from './pages/HomePage';
-import { SeasonPage } from './pages/SeasonPage';
+import React from 'react';
+
+const HomePage = React.lazy(() => import('./pages/HomePage'));
+const SeasonPage = React.lazy(() => import('./pages/SeasonPage'));
 
 function App() {
   return (

@@ -14,6 +14,8 @@ model Season {
   races     Race[]
   champion  Driver? @relation("SeasonChampion", fields: [championId], references: [id])
   championId Int?   // FK to Driver, nullable
+
+  @@index([championId])
 }
 
 model Driver {
@@ -34,6 +36,8 @@ model Race {
   date      DateTime
 
   @@unique([raceName, seasonId])
+  @@index([seasonId]) // For findRacesBySeasonId WHERE clause
+  @@index([seasonId, date(sort: Desc)]) // Composite index for WHERE + ORDER BY optimization
 }
 
 model Result {
@@ -43,4 +47,6 @@ model Result {
   driver   Driver  @relation(fields: [driverId], references: [id])
   driverId Int
   position Int
+
+  @@index([driverId]) // For driver relationship joins
 }
