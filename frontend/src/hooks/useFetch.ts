@@ -51,7 +51,7 @@ export function useFetch<T, A extends unknown[]>(
     return () => {
       cancelled = true;
     };
-  }, [fetcher, ...params, retries]);
+  }, [fetcher, JSON.stringify(params), retries]);
 
   return { data, loading, error, retry };
 }
