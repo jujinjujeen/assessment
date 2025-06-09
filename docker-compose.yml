@@ -21,6 +21,16 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
 
+  pgweb:
+    image: sosedoff/pgweb:0.14.0
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      PGWEB_DATABASE_URL: postgresql://postgres:postgres@postgres:5432/f1_champions?sslmode=disable
+    depends_on:
+      - postgres
+
   backend:
     build:
       context: .
