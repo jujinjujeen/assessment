@@ -113,7 +113,7 @@ src/
 - Shared volumes for development
 
 ### Production (Railway)
-Testing, linting, publishin Docker images, and deploying to Railway is automated via GitHub Actions:
+Testing, linting, scanning with CodeQL, publishing Docker images to Dockerhub, and deploying to Railway is automated via GitHub Actions:
 - **Docker**: Multi-stage builds for optimized images
   - `frontend/Dockerfile.prod` for frontend with Nginx
   - `backend/Dockerfile` with `NODE_ENV=production` for backend

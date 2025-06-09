@@ -37,13 +37,13 @@ After running `make up`, visit:
 - **API Docs**: http://localhost:5444/docs
 - **Database UI** http://localhost:8081 (pgweb)
 
-> You can find openAPI spec at `backend/docs/openapi.yaml` or view in the browser on endpoint above.
+> You can find openAPI spec at `docs/openapi.yaml` or view in the browser on endpoint above.
 
 The application will automatically fetch and seed F1 data on first startup.
 
 ## Architecture
 
-Check out architecture reasoning [here](ARCHITECTURE.md).
+Check out architecture reasoning [here](./docs/ARCHITECTURE.md).
 
 ### Project Structure
 ```
