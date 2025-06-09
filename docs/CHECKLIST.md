@@ -76,43 +76,43 @@ common tasks.
 | Requirement | Status | Implementation Reference | Notes |
 |-------------|--------|--------------------------|-------|
 | **Functional Requirements** |
-| Display seasons with World Champions (2005-present) | ✅ | README.md:L7, ARCHITECTURE.md:L78-82 | Interactive SPA with season list and champion data |
-| Click season to reveal race winners | ✅ | README.md:L7, ARCHITECTURE.md:L93-99 | Component-based navigation with custom hooks |
+| Display seasons with World Champions (2005-present) | ✅ | [README.md](../README.md):L7, [ARCHITECTURE.md](ARCHITECTURE.md):L78-82 | Interactive SPA with season list and champion data |
+| Click season to reveal race winners | ✅ | [README.md](../README.md):L7, [ARCHITECTURE.md](ARCHITECTURE.md):L93-99 | Component-based navigation with custom hooks |
 | Highlight champion rows in race list | ✅ | Directory: frontend/src/components/race/ | Visual highlighting implemented in RaceCard/RaceList components |
-| Fetch data from Ergast API on first request | ✅ | ARCHITECTURE.md:L46-50, L53-54 | Ergast service with client, mapper, repository pattern |
-| Store data in database | ✅ | ARCHITECTURE.md:L63, README.md:L75 | PostgreSQL with Prisma ORM |
-| Serve subsequent requests from backend | ✅ | ARCHITECTURE.md:L62, L96-97 | Redis caching with 1-hour TTL |
-| Graceful error & loading states | ✅ | ARCHITECTURE.md:L78-82, Directory: frontend/src/components/UI/ | Custom hooks with {data, loading, error}, ErrorMessage/LoadingSpinner components |
+| Fetch data from Ergast API on first request | ✅ | [ARCHITECTURE.md](ARCHITECTURE.md):L46-50, L53-54 | Ergast service with client, mapper, repository pattern |
+| Store data in database | ✅ | [ARCHITECTURE.md](ARCHITECTURE.md):L63, [README.md](../README.md):L75 | PostgreSQL with Prisma ORM |
+| Serve subsequent requests from backend | ✅ | [ARCHITECTURE.md](ARCHITECTURE.md):L62, L96-97 | Redis caching with 1-hour TTL |
+| Graceful error & loading states | ✅ | [ARCHITECTURE.md](ARCHITECTURE.md):L78-82, Directory: frontend/src/components/UI/ | Custom hooks with {data, loading, error}, ErrorMessage/LoadingSpinner components |
 | **Non-Functional Requirements** |
 | **Frontend** |
-| React SPA with TypeScript | ✅ | README.md:L73, ARCHITECTURE.md:L84-88 | React 19 + TypeScript with 100% typing |
-| Modern state management | ✅ | ARCHITECTURE.md:L81-82 | Custom hooks pattern, no Redux needed for current complexity |
+| React SPA with TypeScript | ✅ | [README.md](../README.md):L73, [ARCHITECTURE.md](ARCHITECTURE.md):L84-88 | React 19 + TypeScript with 100% typing |
+| Modern state management | ✅ | [ARCHITECTURE.md](ARCHITECTURE.md):L81-82 | Custom hooks pattern, no Redux needed for current complexity |
 | Unit + component tests | ✅ | Directory: `frontend/src/**/__tests__/` | Comprehensive test coverage for all components |
 | **Backend** |
-| Modern framework with proper layering | ✅ | ARCHITECTURE.md:L28-43, README.md:L74 | Express + TypeScript with Route→Controller→Service→Repository pattern |
-| REST endpoints | ✅ | README.md:L40, backend/docs/openapi.yaml | RESTful API with OpenAPI documentation |
-| API contract documented | ✅ | README.md:L40, backend/docs/openapi.yaml | OpenAPI specification available |
+| Modern framework with proper layering | ✅ | [ARCHITECTURE.md](ARCHITECTURE.md):L28-43, [README.md](../README.md):L74 | Express + TypeScript with Route→Controller→Service→Repository pattern |
+| REST endpoints | ✅ | [README.md](../README.md):L40, backend/docs/openapi.yaml | RESTful API with OpenAPI documentation |
+| API contract documented | ✅ | [README.md](../README.md):L40, backend/docs/openapi.yaml | OpenAPI specification available |
 | Unit tests | ✅ | Directory: `backend/src/**/__tests__/` | Complete unit test coverage for all layers |
 | **Database** |
-| Relational database (PostgreSQL) | ✅ | README.md:L75, ARCHITECTURE.md:L63 | PostgreSQL 15 with Prisma ORM |
+| Relational database (PostgreSQL) | ✅ | [README.md](../README.md):L75, [ARCHITECTURE.md](ARCHITECTURE.md):L63 | PostgreSQL 15 with Prisma ORM |
 | Sensible indexes & constraints | ✅ | backend/prisma/migrations/ | Database migrations with proper indexing |
 | **CI/CD** |
-| GitHub Actions pipeline | ✅ | ARCHITECTURE.md:L116 | Automated testing, deps scan, linting, building, deployment |
-| Stages: install → lint → test → build | ✅ | ARCHITECTURE.md:L116 | Complete CI/CD pipeline with proper stages |
-| Reject on test failure | ✅ | ARCHITECTURE.md:L116 | Pipeline fails on test/lint failures |
+| GitHub Actions pipeline | ✅ | [ARCHITECTURE.md](ARCHITECTURE.md):L116 | Automated testing, deps scan, linting, building, deployment |
+| Stages: install → lint → test → build | ✅ | [ARCHITECTURE.md](ARCHITECTURE.md):L116 | Complete CI/CD pipeline with proper stages |
+| Reject on test failure | ✅ | [ARCHITECTURE.md](ARCHITECTURE.md):L116 | Pipeline fails on test/lint failures |
 | **Containerization** |
-| Multi-stage Dockerfiles | ✅ | ARCHITECTURE.md:L117-119, README.md:L76 | Optimized Docker builds for frontend/backend |
-| Single docker-compose.yml | ✅ | README.md:L24-26 | Complete orchestration with `make up` |
-| Healthchecks & environment variables | ✅ | README.md:L29-31, L136-147 | Environment configuration documented |
+| Multi-stage Dockerfiles | ✅ | [ARCHITECTURE.md](ARCHITECTURE.md):L117-119, [README.md](../README.md):L76 | Optimized Docker builds for frontend/backend |
+| Single docker-compose.yml | ✅ | [README.md](../README.md):L24-26 | Complete orchestration with `make up` |
+| Healthchecks & environment variables | ✅ | [README.md](../README.md):L29-31, L136-147 | Environment configuration documented |
 | **Nice to Have** |
 | Lighthouse score ≥ 90 | ✅ | ![lighthouse_score](lighthouse.png) | Score 100. Live demo available |
-| Redis caching layer | ✅ | ARCHITECTURE.md:L62, README.md:L75 | 1-hour TTL caching implemented |
-| Async job for weekly refresh | ✅ | ARCHITECTURE.md:L54-56 | Cron jobs for data synchronization |
-| Seed script | ✅ | README.md:L42, backend/prisma/seed.ts | Automatic database seeding on startup |
-| Containerized admin tool | ✅ | README.md:L38 | pgweb for database administration |
-| Automatic deploy to Railway | ✅ | README.md:L3, ARCHITECTURE.md:L115-123 | Production deployment on Railway |
-| Security dependency scanning | ✅ | ARCHITECTURE.md:L116 | CodeQL |
-| Docker image to public registry | ✅ | ARCHITECTURE.md:L116 | Docker publishing to Dockerhub |
-| Makefile for common tasks | ✅ | README.md:L81-98, Makefile | Comprehensive Makefile with development commands |
+| Redis caching layer | ✅ | [ARCHITECTURE.md](ARCHITECTURE.md):L62, [README.md](../README.md):L75 | 1-hour TTL caching implemented |
+| Async job for weekly refresh | ✅ | [ARCHITECTURE.md](ARCHITECTURE.md):L54-56 | Cron jobs for data synchronization |
+| Seed script | ✅ | [README.md](../README.md):L42, backend/prisma/seed.ts | Automatic database seeding on startup |
+| Containerized admin tool | ✅ | [README.md](../README.md):L38 | pgweb for database administration |
+| Automatic deploy to Railway | ✅ | [README.md](../README.md):L3, [ARCHITECTURE.md](ARCHITECTURE.md):L115-123 | Production deployment on Railway |
+| Security dependency scanning | ✅ | [ARCHITECTURE.md](ARCHITECTURE.md):L116 | CodeQL |
+| Docker image to public registry | ✅ | [ARCHITECTURE.md](ARCHITECTURE.md):L116 | Docker publishing to Dockerhub |
+| Makefile for common tasks | ✅ | [README.md](../README.md):L81-98, Makefile | Comprehensive Makefile with development commands |
 
 

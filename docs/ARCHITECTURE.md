@@ -43,8 +43,8 @@ api/races/
 **Flow**: Route → Controller → Service → Repository → Database
 
 ### External Integration
-Ergast F1 API integration is isolated in `src/service/ergast/`:
-- **Client**: HTTP requests to Ergast API
+Ergast F1 API integration is isolated in `src/service/ergast/` and accessed only during seeding or cron jobs:
+- **Client**: Handles business login for seeding and updating data
 - **Mapper**: Transform external data to internal models
 - **Repository**: Database operations for F1 data
 - **Service**: Orchestrates data fetching and storage
