@@ -11,10 +11,10 @@ import { RacesList } from '../components/race/RaceList';
 export const SeasonPage = () => {
   const { seasonId } = useParams();
   const navigate = useNavigate();
-  
+
   usePageTitle(`F1 Season ${seasonId}`);
-  
-  const { data, loading, error } = useFetch(
+
+  const { data, loading, error, retry } = useFetch(
     fetchSeasonDetails,
     seasonId || ''
   );
@@ -31,7 +31,7 @@ export const SeasonPage = () => {
     }
 
     if (error) {
-      return <ErrorMessage error={error} />;
+      return <ErrorMessage error={error} onRetry={retry} />;
     }
 
     if (!data || data.length === 0) {
@@ -47,12 +47,10 @@ export const SeasonPage = () => {
   };
 
   return (
-    <PageLayout
-      title={`${seasonId} Season`}
-      showBackButton
-      onBack={handleBack}
-    >
+    <PageLayout title={`${seasonId} Season`} showBackButton onBack={handleBack}>
       {renderContent()}
     </PageLayout>
   );
 };
+
+export default SeasonPage;

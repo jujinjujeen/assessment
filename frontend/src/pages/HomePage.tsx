@@ -10,7 +10,7 @@ import { SeasonsList } from '../components/season/SeasonList';
 export const HomePage = () => {
   usePageTitle('F1 Seasons');
 
-  const { data, loading, error } = useFetch(fetchSeasons);
+  const { data, loading, error, retry } = useFetch(fetchSeasons);
 
   const renderContent = () => {
     if (loading) {
@@ -18,7 +18,7 @@ export const HomePage = () => {
     }
 
     if (error) {
-      return <ErrorMessage error={error} />;
+      return <ErrorMessage error={error} onRetry={retry} />;
     }
 
     if (!data || data.length === 0) {
@@ -30,3 +30,5 @@ export const HomePage = () => {
 
   return <PageLayout title="F1 Seasons">{renderContent()}</PageLayout>;
 };
+
+export default HomePage;
